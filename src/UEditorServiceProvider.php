@@ -22,6 +22,7 @@ class UEditorServiceProvider extends RouteServiceProvider
      */
     public function boot(Router $router)
     {
+
          parent::boot($router);
         $viewPath = realpath(__DIR__ . '/../resources/views');
         $this->loadViewsFrom($viewPath, 'UEditor');
@@ -64,7 +65,7 @@ class UEditorServiceProvider extends RouteServiceProvider
         parent::register();
         $configPath =realpath(__DIR__ . '/../config/UEditorUpload.php');
         $this->mergeConfigFrom($configPath, 'UEditorUpload');
-        $this->publishes([$configPath => config_path('laravel-u-editor.php')], 'config');
+        $this->publishes([$configPath => config_path('UEditorUpload.php')], 'config');
 
     }
 
