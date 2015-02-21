@@ -19,7 +19,8 @@
 
   "require": {
     "php": ">=5.4.0",
-    "illuminate/support": "5.0.*"
+    "illuminate/support": "5.0.*",
+    "qiniu/php-sdk": "dev-master"
   },
   "autoload": {
     "psr-4": {

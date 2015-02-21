@@ -9,7 +9,7 @@ use Stevenyangecho\UEditor\Uploader\Upload;
  * @package Stevenyangecho\UEditor\Uploader
  */
 class UploadCatch  extends Upload{
-
+    use UploadQiniu;
 
     public function doUpload()
     {
@@ -68,23 +68,36 @@ class UploadCatch  extends Upload{
             return false;
         }
 
-        //创建目录失败
-        if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
-            $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
-            return false;
-        } else if (!is_writeable($dirname)) {
-            $this->stateInfo = $this->getStateInfo("ERROR_DIR_NOT_WRITEABLE");
+
+        if(config('UEditorUpload.core.mode')=='local'){
+            //创建目录失败
+            if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
+                $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
+                return false;
+            } else if (!is_writeable($dirname)) {
+                $this->stateInfo = $this->getStateInfo("ERROR_DIR_NOT_WRITEABLE");
+                return false;
+            }
+
+            //移动文件
+            if (!(file_put_contents($this->filePath, $img) && file_exists($this->filePath))) { //移动失败
+                $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
+                return false;
+            } else { //移动成功
+                $this->stateInfo = $this->stateMap[0];
+                return true;
+            }
+        }else if(config('UEditorUpload.core.mode')=='qiniu'){
+
+            return $this->uploadQiniu($this->filePath,$img);
+
+        }else{
+            $this->stateInfo = $this->getStateInfo("ERROR_UNKNOWN_MODE");
             return false;
         }
 
-        //移动文件
-        if (!(file_put_contents($this->filePath, $img) && file_exists($this->filePath))) { //移动失败
-            $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
-            return false;
-        } else { //移动成功
-            $this->stateInfo = $this->stateMap[0];
-            return true;
-        }
+
+
 
     }
 

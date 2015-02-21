@@ -17,5 +17,6 @@ return [
     'ERROR_UNKNOWN' => '未知错误',
     'ERROR_DEAD_LINK' => '链接不可用',
     'ERROR_HTTP_LINK' => '链接不是http链接',
-    'ERROR_HTTP_CONTENTTYPE' => '链接contentType不正确'
+    'ERROR_HTTP_CONTENTTYPE' => '链接contentType不正确',
+    'ERROR_UNKNOWN_MODE'=>'文件上传模式错误',
 ];

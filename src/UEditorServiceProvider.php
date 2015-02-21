@@ -22,7 +22,7 @@ class UEditorServiceProvider extends RouteServiceProvider
      */
     public function boot(Router $router)
     {
-        parent::boot($router);
+         parent::boot($router);
         $viewPath = realpath(__DIR__ . '/../resources/views');
         $this->loadViewsFrom($viewPath, 'UEditor');
         $this->publishes([

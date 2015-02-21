@@ -17,5 +17,6 @@ return [
     'ERROR_UNKNOWN' => '未知錯誤',
     'ERROR_DEAD_LINK' => '鏈接不可用',
     'ERROR_HTTP_LINK' => '鏈接不是http鏈接',
-    'ERROR_HTTP_CONTENTTYPE' => '鏈接contentType不正確'
+    'ERROR_HTTP_CONTENTTYPE' => '鏈接contentType不正確',
+    'ERROR_UNKNOWN_MODE'=>'文件上傳模式錯誤',
 ];

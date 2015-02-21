@@ -55,6 +55,7 @@ abstract class Upload
             "ERROR_DEAD_LINK" => trans("UEditor::upload.ERROR_DEAD_LINK"),
             "ERROR_HTTP_LINK" =>  trans("UEditor::upload.ERROR_HTTP_LINK"),
             "ERROR_HTTP_CONTENTTYPE" =>  trans("UEditor::upload.ERROR_HTTP_CONTENTTYPE"),
+            "ERROR_UNKNOWN_MODE" =>  trans("UEditor::upload.ERROR_UNKNOWN_MODE"),
         ];
         $this->stateMap=$stateMap;
 

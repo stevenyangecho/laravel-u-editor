@@ -3,9 +3,16 @@ Laravel 5  UEditor
 
 [UEditor](http://ueditor.baidu.com) 是由百度web前端研发部开发所见即所得富文本web编辑器
 
-此包为laravel5的支持,新增多语言配置,可自由部署前端代码,默认基于 UEditor 1.4.3
+此包为laravel5的支持,新增多语言配置,可自由部署前端代码,默认基于 UEditor 1.4.3.
+
+UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
  
 根据系统的config.app.locale自动切换多语言. 暂时只支持 en,zh_CN,zh_TW
+
+支持本地和七牛云存储,默认为本地上传 public/uploads
+
+##ChangeLog
+ 1.1 版 增加七牛云存储的支持
 
 ## Installation
 
@@ -14,7 +21,7 @@ Laravel 5  UEditor
 To get the latest version of Laravel Exceptions, simply add the following line to the require block of your `composer.json` file:
 
 ```
-"stevenyangecho/laravel-u-editor": "~1.0"
+"stevenyangecho/laravel-u-editor": "~1.1"
 ```
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.

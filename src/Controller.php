@@ -17,13 +17,13 @@ class Controller extends BaseController
     }
 
 
-
-
     public function server(Request $request)
     {
         $config = config('UEditorUpload.upload');
 
         $action = $request->get('action');
+
+
         switch ($action) {
 
             case 'config':
@@ -73,20 +73,40 @@ class Controller extends BaseController
 
             /* 列出图片 */
             case 'listimage':
-                $result = with(new Lists(
-                    $config['imageManagerAllowFiles'],
-                    $config['imageManagerListSize'],
-                    $config['imageManagerListPath'],
-                    $request))->getList();
+
+
+                if (config('UEditorUpload.core.mode') == 'local') {
+                    $result = with(new Lists(
+                        $config['imageManagerAllowFiles'],
+                        $config['imageManagerListSize'],
+                        $config['imageManagerListPath'],
+                        $request))->getList();
+                } else if (config('UEditorUpload.core.mode') == 'qiniu') {
+                    $result = with(new ListsQiniu(
+                        $config['imageManagerAllowFiles'],
+                        $config['imageManagerListSize'],
+                        $config['imageManagerListPath'],
+                        $request))->getList();
+                }
+
 
                 break;
             /* 列出文件 */
             case 'listfile':
-                $result = with(new Lists(
-                    $config['fileManagerAllowFiles'],
-                    $config['fileManagerListSize'],
-                    $config['fileManagerListPath'],
-                    $request))->getList();
+                if (config('UEditorUpload.core.mode') == 'local') {
+                    $result = with(new Lists(
+                        $config['fileManagerAllowFiles'],
+                        $config['fileManagerListSize'],
+                        $config['fileManagerListPath'],
+                        $request))->getList();
+                }else if (config('UEditorUpload.core.mode') == 'qiniu') {
+                    $result = with(new ListsQiniu(
+                        $config['fileManagerAllowFiles'],
+                        $config['fileManagerListSize'],
+                        $config['fileManagerListPath'],
+                        $request))->getList();
+                }
+
                 break;
 
             /* 抓取远程文件 */

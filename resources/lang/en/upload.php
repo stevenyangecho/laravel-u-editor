@@ -17,5 +17,6 @@ return [
     'ERROR_UNKNOWN' => 'An unknown error',
     'ERROR_DEAD_LINK' => 'link is not available',
     'ERROR_HTTP_LINK' => 'not a HTTP link',
-    'ERROR_HTTP_CONTENTTYPE' => 'link contentType incorrect'
+    'ERROR_HTTP_CONTENTTYPE' => 'link contentType incorrect',
+    'ERROR_UNKNOWN_MODE'=>'Please Config the core.mode',
 ];

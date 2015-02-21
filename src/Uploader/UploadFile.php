@@ -12,8 +12,11 @@ use Stevenyangecho\UEditor\Uploader\Upload;
  * @package Stevenyangecho\UEditor\Uploader
  */
 class UploadFile  extends Upload{
+    use UploadQiniu;
     public function doUpload()
     {
+
+
         $file = $this->request->file($this->fileField);
         if (!$file) {
             $this->stateInfo = $this->getStateInfo("ERROR_FILE_NOT_FOUND");
@@ -50,15 +53,29 @@ class UploadFile  extends Upload{
             $this->stateInfo = $this->getStateInfo("ERROR_TYPE_NOT_ALLOWED");
             return false;
         }
-        try {
-            $this->file->move(dirname($this->filePath), $this->fileName);
 
-            $this->stateInfo = $this->stateMap[0];
+        if(config('UEditorUpload.core.mode')=='local'){
+            try {
+                $this->file->move(dirname($this->filePath), $this->fileName);
 
-        } catch (FileException $exception) {
-            $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
+                $this->stateInfo = $this->stateMap[0];
+
+            } catch (FileException $exception) {
+                $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
+                return false;
+            }
+
+        }else if(config('UEditorUpload.core.mode')=='qiniu'){
+
+            $content=file_get_contents($this->file->getPathname());
+            return $this->uploadQiniu($this->filePath,$content);
+
+        }else{
+            $this->stateInfo = $this->getStateInfo("ERROR_UNKNOWN_MODE");
             return false;
         }
+
+
 
 
         return true;
