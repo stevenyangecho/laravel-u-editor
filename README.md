@@ -80,8 +80,11 @@ in  your \<head>  block just put
 The detail useage Please see [http://ueditor.baidu.com](http://ueditor.baidu.com) 
 
 ## TODO
-1.支持 laravel5 csrf
-2.支持跨域上传
+
+1. 支持 laravel5 csrf
+2. 跨域上传
+
+ 
 ## License
 
 Laravel 5  UEditor is licensed under [The MIT License (MIT)](LICENSE).
