@@ -76,13 +76,19 @@ in  your \<head>  block just put
         var ue = UE.getEditor('container');
     </script>
 
+支持laravel5 csrf     
+
+直接 加上 _token 参数即可,如:
+
+        ue.ready(function() {
+            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
+        });
 
 The detail useage Please see [http://ueditor.baidu.com](http://ueditor.baidu.com) 
 
 ## TODO
 
-1. 支持 laravel5 csrf
-2. 跨域上传
+1. 跨域上传
 
  
 ## License
