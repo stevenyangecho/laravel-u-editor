@@ -20,7 +20,7 @@
   "require": {
     "php": ">=5.4.0",
     "illuminate/support": "5.0.*",
-    "qiniu/php-sdk": "dev-master"
+    "qiniu/php-sdk": "7.0.*"
   },
   "autoload": {
     "psr-4": {
