@@ -9,13 +9,16 @@ return [
 | 新增配置,route
 |--------------------------------------------------------------------------
 |
-|注意权限验证,请自行添加middleware
+|注意权限验证,请自行添加middleware 
+|middleware 相当重要,请根据自己的项目设置,比如如果在后台使用,请设置为后台的auth middleware.
+|如果是单纯本机测试,请将 
+|`// 'middleware' => 'auth',` 直接注释掉,如果留 `'middleware'=>''`空值,会产生bug,原因不详.
 |
-|如 'middleware' => 'auth',
+|
 */
     'core' => [
         'route' => [
-            'middleware' => 'auth',
+           // 'middleware' => 'auth',
         ],
 
         'mode'=>'local',//上传方式,local 为本地   qiniu 为七牛
