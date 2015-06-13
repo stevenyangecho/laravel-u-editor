@@ -12,7 +12,13 @@ UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
 支持本地和七牛云存储,默认为本地上传 public/uploads
 
 ##ChangeLog
+ 1.2 版 增加对Laravel5.1 的支持,修改一些说明
  1.1 版 增加七牛云存储的支持
+
+## 重要提示
+有些同学配置总是不成功,除了一般设置,权限等基础问题,很大的可能是 middleware和 csrf 没配置好.
+因为这两点对于服务器的安全至关重要,因此都是必须配置正确的,否则无法运行.
+如何配置需要一定基础,对于看完且理解L5官方文档的同学,应该都有此基础.
 
 ## Installation
 
@@ -21,7 +27,7 @@ UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
 To get the latest version of Laravel Exceptions, simply add the following line to the require block of your `composer.json` file:
 
 ```
-"stevenyangecho/laravel-u-editor": "~1.1"
+"stevenyangecho/laravel-u-editor": "~1.2"
 ```
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
@@ -36,19 +42,20 @@ then run
 
 
 
-## Configuration
+## 配置
 
- in config/laravel-u-editor.php u can configuration ,
+ 若以上安装没问题,自定义项目配置文件会在 config/laravel-u-editor.php  (会自动生成)
 
         'core' => [
             'route' => [
                 'middleware' => 'auth',
             ],
         ],
- the middleware is important!
+  middleware 相当重要,请根据自己的项目设置,比如如果在后台使用,请设置为后台的auth middleware.
+  如果是单纯本机测试,请将 
+  `// 'middleware' => 'auth',` 直接注释掉,如果留 `'middleware'=>''`空值,会产生bug,原因不详.
  
- public/laravel-u-editor/ will  have  the  full UEditor assets.
- 
+ 所有UEditor 的官方资源,会放在 public/laravel-u-editor/ ,可以根据自己的需求,更改.
 
 
 ## Usage
@@ -74,15 +81,15 @@ in  your \<head>  block just put
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
         var ue = UE.getEditor('container');
+            ue.ready(function() {
+            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');//此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.    
+        });
     </script>
 
-支持laravel5 csrf     
 
-直接 加上 _token 参数即可,如:
 
-        ue.ready(function() {
-            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
-        });
+
+
 
 The detail useage Please see [http://ueditor.baidu.com](http://ueditor.baidu.com) 
 
