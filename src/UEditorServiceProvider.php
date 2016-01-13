@@ -85,7 +85,7 @@ class UEditorServiceProvider extends RouteServiceProvider
 
         //定义路由
         $router->group($config, function ($router) {
-            $router->any('/laravel-u-editor/server', 'Controller@server');
+            $router->any('/editor/server', 'Controller@server');
         });
     }
 
