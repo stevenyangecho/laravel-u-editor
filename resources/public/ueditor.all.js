@@ -1,7 +1,7 @@
 /*!
  * UEditor
  * version: ueditor
- * build: Thu May 29 2014 16:47:49 GMT+0800 (中国标准时间)
+ * build: Tue Aug 25 2015 15:23:01 GMT+0800 (CST)
  */
 
 (function(){
@@ -9532,6 +9532,7 @@ var htmlparser = UE.htmlparser = function (htmlstr,ignoreBlank) {
     return root;
 };
 
+
 // core/filternode.js
 /**
  * UE过滤节点的静态方法
@@ -14442,7 +14443,6 @@ UE.plugin.register('copy', function () {
         bindEvents: {
             'ready': function () {
                 if (!browser.ie) {
-
                     if (window.ZeroClipboard) {
                         initZeroClipboard();
                     } else {
@@ -14452,7 +14452,6 @@ UE.plugin.register('copy', function () {
                             type: "text/javascript",
                             defer: "defer"
                         }, function () {
-
                             initZeroClipboard();
                         });
                     }
@@ -19811,6 +19810,7 @@ UE.plugins['video'] = function (){
         }
     }
 })();
+
 
 // plugins/table.action.js
 /**
