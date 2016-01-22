@@ -12,6 +12,11 @@ UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
 支持本地和七牛云存储,默认为本地上传 public/uploads
 
 ##ChangeLog
+ 1.3.0 版  改变服务器请求路由 为 /laravel-u-editor-server/server 
+           老版本升级,需要 更改 public/ueditor.config.js 
+          
+            , serverUrl: "/laravel-u-editor-server/server"
+
  1.2.5 版 增加对Laravel5.* 的支持,更新百度 UEditor 1.4.3.1
  
  1.2 版 增加对Laravel5.1 的支持,修改一些说明
@@ -30,7 +35,7 @@ UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
 To get the latest version of Laravel Exceptions, simply add the following line to the require block of your `composer.json` file:
 
 ```
-"stevenyangecho/laravel-u-editor": "~1.2"
+"stevenyangecho/laravel-u-editor": "~1.3"
 ```
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
