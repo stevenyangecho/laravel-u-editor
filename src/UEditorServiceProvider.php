@@ -23,17 +23,16 @@ class UEditorServiceProvider extends RouteServiceProvider
     public function boot(Router $router)
     {
 
-         parent::boot($router);
+        parent::boot($router);
         $viewPath = realpath(__DIR__ . '/../resources/views');
         $this->loadViewsFrom($viewPath, 'UEditor');
         $this->publishes([
             realpath(__DIR__ . '/../resources/views') => base_path('resources/views/vendor/UEditor'),
-        ],'view');
-
+        ], 'view');
 
 
         $this->publishes([
-            realpath(__DIR__ . '/../resources/public') => public_path().'/laravel-u-editor',
+            realpath(__DIR__ . '/../resources/public') => public_path() . '/laravel-u-editor',
         ], 'assets');
 
 
@@ -44,7 +43,7 @@ class UEditorServiceProvider extends RouteServiceProvider
         //根据系统配置 取得 local
         $locale = str_replace('_', '-', strtolower(config('app.locale')));
         $file = "/laravel-u-editor/lang/$locale/$locale.js";
-        $filePath = public_path().$file;
+        $filePath = public_path() . $file;
 
         if (!\File::exists($filePath)) {
             //Default is zh-cn
@@ -63,7 +62,7 @@ class UEditorServiceProvider extends RouteServiceProvider
     public function register()
     {
         parent::register();
-        $configPath =realpath(__DIR__ . '/../config/UEditorUpload.php');
+        $configPath = realpath(__DIR__ . '/../config/UEditorUpload.php');
         $this->mergeConfigFrom($configPath, 'UEditorUpload');
         $this->publishes([$configPath => config_path('UEditorUpload.php')], 'config');
 
@@ -85,7 +84,7 @@ class UEditorServiceProvider extends RouteServiceProvider
 
         //定义路由
         $router->group($config, function ($router) {
-            $router->any('/laravel-u-editor/server', 'Controller@server');
+            $router->any('/laravel-u-editor-server/server', 'Controller@server');
         });
     }
 
