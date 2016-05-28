@@ -28,6 +28,12 @@ UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
 因为这两点对于服务器的安全至关重要,因此都是必须配置正确的,否则无法运行.
 如何配置需要一定基础,对于看完且理解L5官方文档的同学,应该都有此基础.
 
+还没有七牛云存储的同学,使用此邀请链接注册,免费10G空间20G流量!
+
+https://portal.qiniu.com/signup?code=3ljldp0vljo7m
+
+
+
 ## Installation
 
 [PHP](https://php.net) 5.4+ , and [Composer](https://getcomposer.org) are required.
