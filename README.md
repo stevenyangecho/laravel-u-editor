@@ -3,7 +3,7 @@ Laravel 5  UEditor
 
 [UEditor](http://ueditor.baidu.com) 是由百度web前端研发部开发所见即所得富文本web编辑器
 
-此包为laravel5的支持,新增多语言配置,可自由部署前端代码,默认基于 UEditor 1.4.3.1
+此包为laravel5的支持,新增多语言配置,可自由部署前端代码,默认基于 UEditor 1.4.3.3
 
 UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
  
@@ -12,6 +12,8 @@ UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
 支持本地和七牛云存储,默认为本地上传 public/uploads
 
 ##ChangeLog
+ 1.4.0 版  支持 laravel5.3 更新百度 UEditor 1.4.3.3
+
  1.3.0 版  改变服务器请求路由 为 /laravel-u-editor-server/server 
            老版本升级,需要 更改 public/ueditor.config.js 
           
