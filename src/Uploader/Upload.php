@@ -100,7 +100,7 @@ abstract class Upload
      */
     protected function getFileExt()
     {
-        return '.' . $this->file->guessClientExtension();
+        return '.' . $this->file->getClientOriginalExtension();
     }
 
     /**
