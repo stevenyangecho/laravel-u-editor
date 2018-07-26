@@ -21,7 +21,9 @@
     "php": ">=5.4.0",
     "ext-fileinfo": "*",
     "illuminate/support": "5.*",
-    "qiniu/php-sdk": "7.*"
+    "qiniu/php-sdk": "7.*",
+    "jacobcyl/ali-oss-storage": "^2.1"
+
   },
   "autoload": {
     "psr-4": {

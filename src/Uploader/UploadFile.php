@@ -1,7 +1,5 @@
 <?php namespace Stevenyangecho\UEditor\Uploader;
 
-use Stevenyangecho\UEditor\Uploader\Upload;
-
 /**
  *
  *
@@ -11,8 +9,10 @@ use Stevenyangecho\UEditor\Uploader\Upload;
  *
  * @package Stevenyangecho\UEditor\Uploader
  */
-class UploadFile  extends Upload{
+class UploadFile extends Upload
+{
     use UploadQiniu;
+
     public function doUpload()
     {
 
@@ -54,7 +54,7 @@ class UploadFile  extends Upload{
             return false;
         }
 
-        if(config('UEditorUpload.core.mode')=='local'){
+        if (config('UEditorUpload.core.mode') == 'local') {
             try {
                 $this->file->move(dirname($this->filePath), $this->fileName);
 
@@ -65,17 +65,21 @@ class UploadFile  extends Upload{
                 return false;
             }
 
-        }else if(config('UEditorUpload.core.mode')=='qiniu'){
+        } else if (config('UEditorUpload.core.mode') == 'qiniu') {
 
-            $content=file_get_contents($this->file->getPathname());
-            return $this->uploadQiniu($this->filePath,$content);
+            $content = file_get_contents($this->file->getPathname());
+            return $this->uploadQiniu($this->filePath, $content);
 
-        }else{
+        } else if (config('UEditorUpload.core.mode') == 'aliyun') {
+            Storage::disk('oss');
+            $content = file_get_contents($this->file->getPathname());
+            // return aliyun oss resource url
+            $this->stateInfo =  Storage::put($this->filePath, $content) ? 'SUCCESS' : $this->getStateInfo("ERROR_UNKNOWN_MODE");
+            $this->fullName = Storage::url($this->fullName);
+        } else {
             $this->stateInfo = $this->getStateInfo("ERROR_UNKNOWN_MODE");
             return false;
         }
-
-
 
 
         return true;
