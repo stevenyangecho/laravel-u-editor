@@ -87,6 +87,12 @@ class Controller extends BaseController
                         $config['imageManagerListSize'],
                         $config['imageManagerListPath'],
                         $request))->getList();
+                }else {
+                    $result = with(new Lists(
+                        $config['imageManagerAllowFiles'],
+                        $config['imageManagerListSize'],
+                        $config['imageManagerListPath'],
+                        $request))->getList();
                 }
 
 
@@ -104,6 +110,12 @@ class Controller extends BaseController
                         $config['fileManagerAllowFiles'],
                         $config['fileManagerListSize'],
                         $config['fileManagerListPath'],
+                        $request))->getList();
+                }else {
+                    $result = with(new Lists(
+                        $config['imageManagerAllowFiles'],
+                        $config['imageManagerListSize'],
+                        $config['imageManagerListPath'],
                         $request))->getList();
                 }
 
