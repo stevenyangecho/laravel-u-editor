@@ -156,7 +156,7 @@ class Controller extends BaseController
                 break;
         }
 
-        return response()->json($result, 200, [], JSON_UNESCAPED_UNICODE);
+        return response()->json($result, 200, [], JSON_UNESCAPED_UNICODE)->withCallback($request->input('callback'));
 
     }
 

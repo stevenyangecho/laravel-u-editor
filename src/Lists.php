@@ -67,7 +67,7 @@ class Lists
                 } else {
                     if (preg_match("/\.(".$allowFiles.")$/i", $file)) {
                         $files[] = array(
-                            'url'=> substr($path2, strlen($_SERVER['DOCUMENT_ROOT'])),
+                            'url'=> str_replace(public_path(), '', $path2),
                             'mtime'=> filemtime($path2)
                         );
                     }
