@@ -1,11 +1,11 @@
-<?php namespace Stevenyangecho\UEditor;
+<?php namespace Shenglin\UEditor;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
-use Stevenyangecho\UEditor\Uploader\UploadScrawl;
-use Stevenyangecho\UEditor\Uploader\UploadFile;
-use Stevenyangecho\UEditor\Uploader\UploadCatch;
+use Shenglin\UEditor\Uploader\UploadScrawl;
+use Shenglin\UEditor\Uploader\UploadFile;
+use Shenglin\UEditor\Uploader\UploadCatch;
 
 class Controller extends BaseController
 {
@@ -156,7 +156,12 @@ class Controller extends BaseController
                 break;
         }
 
-        return response()->json($result, 200, [], JSON_UNESCAPED_UNICODE)->withCallback($request->input('callback'));
+        if (strpos($_SERVER['HTTP_USER_AGENT'],"Triden")) {
+            //如果是IE 特殊处理header
+            return response($result,200)->header('Content-Type', 'text/html;charset=utf-8');
+        } else{
+            return response()->json($result, 200, [], JSON_UNESCAPED_UNICODE);
+        }
 
     }
 

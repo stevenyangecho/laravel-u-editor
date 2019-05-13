@@ -1,19 +1,20 @@
 {
-  "name": "stevenyangecho/laravel-u-editor",
-  "description": "UEditor for laravel5. Support i18n. UEditor is a Rich Text Web Editor From Baidu.",
+  "name": "shenglin-php/laravel-u-editor",
+  "description": "UEditor for laravel5. Support i18n. UEditor is a Rich Text Web Editor From Baidu. Add ali-oss filesystems. Forked by stevenyangecho/laravel-u-editor.",
   "keywords": [
     "laravel",
     "ueditor",
     "laravel-u-editor",
     "laravel5 web text editor",
-    "stevenyangecho",
-    "steven yang"
+    "oss",
+    "qiniu",
+    "shenglin-php"
   ],
   "license": "MIT",
   "authors": [
     {
-      "name": "Steven Yang",
-      "email": "yqmking@163.com"
+      "name": "shenglin-php",
+      "email": "s617790418@126.com"
     }
   ],
 
@@ -21,11 +22,12 @@
     "php": ">=5.4.0",
     "ext-fileinfo": "*",
     "illuminate/support": "5.*",
-    "qiniu/php-sdk": "7.*"
+    "qiniu/php-sdk": "7.*",
+    "aliyuncs/oss-sdk-php": "^2.3"
   },
   "autoload": {
     "psr-4": {
-      "Stevenyangecho\\UEditor\\": "src/"
+      "Shenglin\\UEditor\\": "src/"
     }
   },
   "minimum-stability": "dev",

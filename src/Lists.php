@@ -1,4 +1,4 @@
-<?php namespace Stevenyangecho\UEditor;
+<?php namespace Shenglin\UEditor;
 
 
 class Lists
