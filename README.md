@@ -11,11 +11,11 @@ UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
 
 支持本地和七牛云存储,默认为本地上传 public/uploads
 
-##Fork
+## Fork
 
 Forked by [stevenyangecho/laravel-u-editor](https://github.com/stevenyangecho/laravel-u-editor).
 
-##ChangeLog
+## ChangeLog
  
   增加阿里云存储的支持
 
