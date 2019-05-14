@@ -29,8 +29,8 @@ class LumenUEditorServiceProvider extends ServiceProvider
 
         //定义路由
         $router->group($config, function ($router) {
-            $router->get('/laravel-u-editor-server/server', 'Controller@server');
-            $router->post('/laravel-u-editor-server/server', 'Controller@server');
+            $router->get('/laravel-u-editor-server/server', 'LumenController@server');
+            $router->post('/laravel-u-editor-server/server', 'LumenController@server');
         });
     }
 
