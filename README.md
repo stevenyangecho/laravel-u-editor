@@ -45,6 +45,7 @@ Once Laravel Exceptions is installed, you need to register the service provider.
 * `'Shenglin\UEditor\UEditorServiceProvider'`
 
 If Lumen
+
 * `$app->register(Shenglin\UEditor\LumenUEditorServiceProvider);`
 
 then run 
@@ -54,6 +55,8 @@ then run
 
 
 ## 配置
+
+For Laravel
 
  若以上安装没问题,自定义项目配置文件会在 config/UEditorUpload.php  (会自动生成)
 
@@ -68,6 +71,10 @@ then run
  
  所有UEditor 的官方资源,会放在 public/laravel-u-editor/ ,可以根据自己的需求,更改.
 
+For Lumen
+
+ 如需要配置config
+ 请将config/UEditorUpload.php 拷贝到项目config目录中 再配置
 
 ## Usage
 
@@ -98,17 +105,8 @@ in  your \<head>  block just put
     </script>
 
 
-
-
-
-
 The detail useage Please see [http://ueditor.baidu.com](http://ueditor.baidu.com) 
 
-## TODO
-
-1. 跨域上传
-
- 
 ## License
 
 Laravel 5  UEditor is licensed under [The MIT License (MIT)](LICENSE).
