@@ -18,6 +18,7 @@ Forked by [stevenyangecho/laravel-u-editor](https://github.com/stevenyangecho/la
 ## ChangeLog
  
   增加阿里云存储的支持
+  增加Lumen5的provider支持
 
 ## 重要提示
 有些同学配置总是不成功,除了一般设置,权限等基础问题,很大的可能是 middleware和 csrf 没配置好.
@@ -34,7 +35,7 @@ Forked by [stevenyangecho/laravel-u-editor](https://github.com/stevenyangecho/la
 To get the latest version of Laravel Exceptions, simply add the following line to the require block of your `composer.json` file:
 
 ```
-"stevenyangecho/laravel-u-editor": "~1.4"
+"shenglin-php/laravel-u-editor": "~1.4"
 ```
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
@@ -42,6 +43,9 @@ You'll then need to run `composer install` or `composer update` to download it a
 Once Laravel Exceptions is installed, you need to register the service provider. Open up `config/app.php` and add the following to the `providers` key.
 
 * `'Shenglin\UEditor\UEditorServiceProvider'`
+
+If Lumen
+* `$app->register(Shenglin\UEditor\LumenUEditorServiceProvider);`
 
 then run 
 
@@ -51,7 +55,7 @@ then run
 
 ## 配置
 
- 若以上安装没问题,自定义项目配置文件会在 config/laravel-u-editor.php  (会自动生成)
+ 若以上安装没问题,自定义项目配置文件会在 config/UEditorUpload.php  (会自动生成)
 
         'core' => [
             'route' => [
