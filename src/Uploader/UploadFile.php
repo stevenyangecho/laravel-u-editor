@@ -87,6 +87,16 @@ class UploadFile  extends Upload{
                 throw new \Exception(" Upload Files To Server Local Disk Failed On UpYunSdk Driver - 1024. ");
             }
 
+        }else if(config('UEditorUpload.core.mode')=='storage'){
+            //上传文件到oss
+            $folder = config('UEditorUpload.core.storage.folder');
+            if(config('UEditorUpload.core.storage.classifyByFileType')){
+                $folder .='/'. str_replace('.','',$this->fileType);
+            }
+            $path = \Storage::putFile($folder, $this->file);
+            $this->fullName = \Storage::url($path);
+            $this->stateInfo=$this->stateMap[0];
+
         }else{
             $this->stateInfo = $this->getStateInfo("ERROR_UNKNOWN_MODE");
             return false;

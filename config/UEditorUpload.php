@@ -21,7 +21,7 @@ return [
            // 'middleware' => 'auth',
         ],
 
-        'mode'=>'local',//上传方式,local 为本地   qiniu 为七牛
+        'mode'=>'local',//上传方式,local 为本地   qiniu 为七牛,storage 为使用laravel的storage
 
         //七牛配置,若mode='qiniu',以下为必填.
         'qiniu'=>[
@@ -30,6 +30,10 @@ return [
             'bucket'=>'',
             'url'=>'http://xxx.clouddn.com',//七牛分配的CDN域名,注意带上http://
 
+        ],
+        'storage'=>[
+            'folder'=>'files',//注意不要加'/'
+            'classifyByFileType'=>false,//是否根据文件类型拆分到子文件夹
         ]
     ],
     /**
