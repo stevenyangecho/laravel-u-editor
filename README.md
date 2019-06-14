@@ -14,8 +14,11 @@ UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
 
 ## ChangeLog
   v1.4.3
+
   增加laravel的storage的支持
+
   增加阿里云存储的支持
+  
   增加Lumen5的provider支持
 
 ## 重要提示
