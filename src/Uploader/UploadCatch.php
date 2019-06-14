@@ -1,15 +1,16 @@
-<?php namespace Stevenyangecho\UEditor\Uploader;
+<?php namespace Shenglin\UEditor\Uploader;
 
-use Stevenyangecho\UEditor\Uploader\Upload;
+use Shenglin\UEditor\Uploader\Upload;
 
 /**
  * Class UploadCatch
  * 图片远程抓取
  *
- * @package Stevenyangecho\UEditor\Uploader
+ * @package Shenglin\UEditor\Uploader
  */
 class UploadCatch  extends Upload{
     use UploadQiniu;
+    use UploadAliOss;
 
     public function doUpload()
     {
@@ -91,6 +92,9 @@ class UploadCatch  extends Upload{
 
             return $this->uploadQiniu($this->filePath,$img);
 
+        }else if(config('UEditorUpload.core.mode')=='oss'){
+
+            return $this->uploadAliOss($this->filePath,$img);
         }
         // else if(config('UEditorUpload.core.mode')=='upyun'){
         //    return $this->uploadUpyun($this->filePath,$img);

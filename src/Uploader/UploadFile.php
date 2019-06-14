@@ -1,6 +1,6 @@
-<?php namespace Stevenyangecho\UEditor\Uploader;
+<?php namespace Shenglin\UEditor\Uploader;
 
-use Stevenyangecho\UEditor\Uploader\Upload;
+use Shenglin\UEditor\Uploader\Upload;
 
 /**
  *
@@ -9,12 +9,11 @@ use Stevenyangecho\UEditor\Uploader\Upload;
  *
  * 文件/图像普通上传
  *
- * @package Stevenyangecho\UEditor\Uploader
+ * @package Shenglin\UEditor\Uploader
  */
 class UploadFile  extends Upload{
-
-    use UploadQiniu,UploadUpyun;
-
+    use UploadQiniu;
+    use UploadAliOss;
     public function doUpload()
     {
 
@@ -31,11 +30,17 @@ class UploadFile  extends Upload{
         }
 
         $this->file = $file;
+
         $this->oriName = $this->file->getClientOriginalName();
+
         $this->fileSize = $this->file->getSize();
         $this->fileType = $this->getFileExt();
+
         $this->fullName = $this->getFullName();
+
+
         $this->filePath = $this->getFilePath();
+
         $this->fileName = basename($this->filePath);
 
 
@@ -66,26 +71,10 @@ class UploadFile  extends Upload{
             $content=file_get_contents($this->file->getPathname());
             return $this->uploadQiniu($this->filePath,$content);
 
-        }else if(config('UEditorUpload.core.mode')=='upyun'){
+        }else if(config('UEditorUpload.core.mode')=='oss'){
 
-            /**
-             * 原理是将文件先存储到本地服务器，再调用接口转存到又拍云那边，然后把本地的文件删除
-             */
-            try {
-                $this->file->move(dirname($this->filePath), $this->fileName);
-                $this->stateInfo = $this->stateMap[0];
-            } catch (FileException $exception) {
-                $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
-            }
-
-            /**
-             * 本地服务器上传失败或异常，直接报错
-             */
-            if($this->stateInfo == "SUCCESS") {
-                return $this->uploadUpyun($this->fullName);
-            }else{
-                throw new \Exception(" Upload Files To Server Local Disk Failed On UpYunSdk Driver - 1024. ");
-            }
+            $content=file_get_contents($this->file->getPathname());
+            return $this->uploadAliOss($this->filePath,$content);
 
         }else if(config('UEditorUpload.core.mode')=='storage'){
             //上传文件到oss

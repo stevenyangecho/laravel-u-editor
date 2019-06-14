@@ -1,13 +1,13 @@
 <?php namespace Shenglin\UEditor;
 
-use Illuminate\Routing\Controller as BaseController;
+use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Shenglin\UEditor\Uploader\UploadScrawl;
 use Shenglin\UEditor\Uploader\UploadFile;
 use Shenglin\UEditor\Uploader\UploadCatch;
 
-class Controller extends BaseController
+class LumenController extends BaseController
 {
 
 
