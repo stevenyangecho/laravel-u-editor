@@ -3,7 +3,6 @@
 use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Shenglin\UEditor\Uploader\UploadScrawl;
 use Shenglin\UEditor\Uploader\UploadFile;
 use Shenglin\UEditor\Uploader\UploadCatch;
@@ -133,7 +132,7 @@ class LumenController extends BaseController
                     'fieldName' => $config['catcherFieldName'],
                 );
 
-                $sources = Input::get($upConfig['fieldName']);
+                $sources = $request->get($upConfig['fieldName']);
                 $list = [];
                 foreach ($sources as $imgUrl) {
                     $upConfig['imgUrl'] = $imgUrl;
