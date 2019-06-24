@@ -11,7 +11,18 @@ UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
 
 支持本地和七牛云存储,默认为本地上传 public/uploads
 
-##ChangeLog
+
+## ChangeLog
+  v1.4.4
+
+  增加laravel的storage的支持
+
+  增加阿里云存储的支持
+  
+  增加Lumen5的provider支持
+  
+  ~~v1.4.3 (bug已删除)~~
+  
  1.4.0 版  支持 laravel5.3 更新百度 UEditor 1.4.3.3
 
  1.3.0 版  改变服务器请求路由 为 /laravel-u-editor-server/server 
@@ -49,6 +60,10 @@ Once Laravel Exceptions is installed, you need to register the service provider.
 
 * `'Stevenyangecho\UEditor\UEditorServiceProvider'`
 
+If Lumen
+
+* `$app->register(Stevenyangecho\UEditor\LumenUEditorServiceProvider);`
+
 then run 
 
 * `php artisan vendor:publish`
@@ -57,7 +72,9 @@ then run
 
 ## 配置
 
- 若以上安装没问题,自定义项目配置文件会在 config/laravel-u-editor.php  (会自动生成)
+For Laravel
+
+ 若以上安装没问题,自定义项目配置文件会在 config/UEditorUpload.php  (会自动生成)
 
         'core' => [
             'route' => [
@@ -70,6 +87,10 @@ then run
  
  所有UEditor 的官方资源,会放在 public/laravel-u-editor/ ,可以根据自己的需求,更改.
 
+For Lumen
+
+ 如需要配置config
+ 请将config/UEditorUpload.php 拷贝到项目config目录中 再配置
 
 ## Usage
 
@@ -100,10 +121,6 @@ in  your \<head>  block just put
     </script>
 
 
-
-
-
-
 The detail useage Please see [http://ueditor.baidu.com](http://ueditor.baidu.com) 
 
 ## TODO
@@ -114,3 +131,4 @@ The detail useage Please see [http://ueditor.baidu.com](http://ueditor.baidu.com
 ## License
 
 Laravel 5  UEditor is licensed under [The MIT License (MIT)](LICENSE).
+
