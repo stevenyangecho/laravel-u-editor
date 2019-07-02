@@ -1,4 +1,4 @@
-<?php namespace Shenglin\UEditor\Uploader;
+<?php namespace Stevenyangecho\UEditor\Uploader;
 
 use \Qiniu\Storage\UploadManager;
 use \Qiniu\Auth;
@@ -10,7 +10,7 @@ use \Qiniu\Auth;
  *
  * 七牛 上传 类
  *
- * @package Shenglin\UEditor\Uploader
+ * @package Stevenyangecho\UEditor\Uploader
  */
 trait UploadQiniu
 {

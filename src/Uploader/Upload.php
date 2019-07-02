@@ -1,4 +1,4 @@
-<?php namespace Shenglin\UEditor\Uploader;
+<?php namespace Stevenyangecho\UEditor\Uploader;
 
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
  * 文件上传抽象类
  *
  *
- * @package Shenglin\UEditor\Uploader
+ * @package Stevenyangecho\UEditor\Uploader
  */
 abstract class Upload
 {

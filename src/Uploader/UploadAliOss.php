@@ -8,7 +8,7 @@ use OSS\OssClient;
  *
  * 阿里 上传 类
  *
- * @package Shenglin\UEditor\Uploader
+ * @package Stevenyangecho\UEditor\Uploader
  */
 trait UploadAliOss
 {

@@ -1,6 +1,6 @@
-<?php namespace Shenglin\UEditor\Uploader;
+<?php namespace Stevenyangecho\UEditor\Uploader;
 
-use Shenglin\UEditor\Uploader\Upload;
+use Stevenyangecho\UEditor\Uploader\Upload;
 
 /**
  *
@@ -9,7 +9,7 @@ use Shenglin\UEditor\Uploader\Upload;
  *
  * 文件/图像普通上传
  *
- * @package Shenglin\UEditor\Uploader
+ * @package Stevenyangecho\UEditor\Uploader
  */
 class UploadFile  extends Upload{
     use UploadQiniu;
