@@ -13,7 +13,7 @@ UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
 
 
 ## ChangeLog
-  v1.4.4
+  v1.4.5
 
   增加laravel的storage的支持
 
