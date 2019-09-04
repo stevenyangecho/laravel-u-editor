@@ -29,5 +29,15 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "extra": {
+      "laravel": {
+          "providers": [
+              "Stevenyangecho\\UEditor\\UEditorServiceProvider"
+          ],
+          "aliases": {
+              "UEditor": "Stevenyangecho\\UEditor\\UEditorServiceProvider"
+          }
+      }
+  }  
 }
