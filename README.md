@@ -11,14 +11,30 @@ UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
 
 支持本地和七牛云存储,默认为本地上传 public/uploads
 
-## Fork
-
-Forked by [stevenyangecho/laravel-u-editor](https://github.com/stevenyangecho/laravel-u-editor).
 
 ## ChangeLog
- 
+  v1.4.5
+
+  增加laravel的storage的支持
+
   增加阿里云存储的支持
+  
   增加Lumen5的provider支持
+  
+  ~~v1.4.3 (bug已删除)~~
+  
+ 1.4.0 版  支持 laravel5.3 更新百度 UEditor 1.4.3.3
+
+ 1.3.0 版  改变服务器请求路由 为 /laravel-u-editor-server/server 
+           老版本升级,需要 更改 public/ueditor.config.js 
+          
+            , serverUrl: "/laravel-u-editor-server/server"
+
+ 1.2.5 版 增加对Laravel5.* 的支持,更新百度 UEditor 1.4.3.1
+ 
+ 1.2 版 增加对Laravel5.1 的支持,修改一些说明
+ 
+ 1.1 版 增加七牛云存储的支持
 
 ## 重要提示
 有些同学配置总是不成功,除了一般设置,权限等基础问题,很大的可能是 middleware和 csrf 没配置好.
@@ -35,18 +51,18 @@ Forked by [stevenyangecho/laravel-u-editor](https://github.com/stevenyangecho/la
 To get the latest version of Laravel Exceptions, simply add the following line to the require block of your `composer.json` file:
 
 ```
-"shenglin-php/laravel-u-editor": "~1.4"
+"stevenyangecho/laravel-u-editor": "~1.4"
 ```
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
 Once Laravel Exceptions is installed, you need to register the service provider. Open up `config/app.php` and add the following to the `providers` key.
 
-* `'Shenglin\UEditor\UEditorServiceProvider'`
+* `'Stevenyangecho\UEditor\UEditorServiceProvider'`
 
 If Lumen
 
-* `$app->register(Shenglin\UEditor\LumenUEditorServiceProvider);`
+* `$app->register(Stevenyangecho\UEditor\LumenUEditorServiceProvider);`
 
 then run 
 
@@ -107,6 +123,11 @@ in  your \<head>  block just put
 
 The detail useage Please see [http://ueditor.baidu.com](http://ueditor.baidu.com) 
 
+## TODO
+
+1. 跨域上传
+
+ 
 ## License
 
 Laravel 5  UEditor is licensed under [The MIT License (MIT)](LICENSE).
