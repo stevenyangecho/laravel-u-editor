@@ -67,12 +67,20 @@ U_EDITOR_FTP_SEP=|
 > ### UEditorUpload.php
 
 ```php
+
+'core' => [
+   'mode' => 'ftp'
+]
+
+// ...
+
 'upload' => [
    "imagePathFormat" => "uploads/image/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
 ]
 ```
+mode 改成 ftp
 
-改成你 FTP 服务器的路径，最后返回的图片地址会与域名拼接，变成：
+upload 的 imagePathFormat 改成你要上传到的 FTP 服务器中的哪个位置，文件夹不存在会自动创建，最后返回的图片地址会与域名拼接，变成：
 `https://www.example.com/uploads/image/20200109/xxxxxxx.png`
 
 ## 吐槽
