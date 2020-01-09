@@ -21,7 +21,16 @@ return [
             // 'middleware' => 'auth',
         ],
 
-        'mode' => 'local',//上传方式,local 为本地   qiniu 为七牛,oss为阿里云oss,storage 为使用laravel的storage
+        /**
+         * 上传方式说明
+         *
+         * local    本地
+         * qiniu    七牛
+         * oss      阿里云oss
+         * storage  使用laravel的storage
+         * ftp      上传至FTP服务器
+         */
+        'mode' => 'local',
 
         //七牛配置,若mode='qiniu',以下为必填.
         'qiniu' => [
@@ -50,8 +59,10 @@ return [
             'classifyByFileType' => false,//是否根据文件类型拆分到子文件夹
 
         ],
+
+        // FTP 配置可以直接到 .env 文件中设置
         'ftp' => [
-            // 域名 例：U_EDITOR_FTP_DOMAIN=https://www.example.com/
+            // 域名 例：https://www.example.com/
             'domain' => env('U_EDITOR_FTP_DOMAIN', ''),
 
             // ftp地址 例：10.20.30.40

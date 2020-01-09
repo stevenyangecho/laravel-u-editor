@@ -9,7 +9,7 @@
 > ### .env
 
 ```dotenv
-# FTP 域名
+# FTP 域名 最后的“/”不能缺少
 U_EDITOR_FTP_DOMAIN=https://www.example.com/
 
 # FTP 地址
@@ -33,6 +33,10 @@ U_EDITOR_FTP_MODE=0777
 # 是否记录日志
 U_EDITOR_FTP_LOG=true
 ```
+
+记录日志也只是记录类似链接错误、登录错误、上传错误等问题，并不会每次上传都有记录，日志默认存在：
+
+`项目目录/storage/logs/ftp-Y-m-d.log`
 
 支持多域名，例如：
 
@@ -67,20 +71,20 @@ U_EDITOR_FTP_SEP=|
 > ### UEditorUpload.php
 
 ```php
-
 'core' => [
    'mode' => 'ftp'
-]
+],
 
 // ...
 
 'upload' => [
    "imagePathFormat" => "uploads/image/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
-]
+],
 ```
 mode 改成 ftp
 
-upload 的 imagePathFormat 改成你要上传到的 FTP 服务器中的哪个位置，文件夹不存在会自动创建，最后返回的图片地址会与域名拼接，变成：
+upload 的 imagePathFormat 改成你要上传到的 FTP 服务器中的位置，文件夹不存在会自动创建，最后返回的图片地址会与域名拼接，变成：
+
 `https://www.example.com/uploads/image/20200109/xxxxxxx.png`
 
 ## 吐槽
