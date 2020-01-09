@@ -55,40 +55,65 @@ class UploadFile  extends Upload{
             return false;
         }
 
-        if(config('UEditorUpload.core.mode')=='local'){
-            try {
-                $this->file->move(dirname($this->filePath), $this->fileName);
+        switch (config('UEditorUpload.core.mode')) {
 
-                $this->stateInfo = $this->stateMap[0];
+            // 上传至本地
+            case 'local' :
 
-            } catch (FileException $exception) {
-                $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
+                try {
+                    $this->file->move(dirname($this->filePath), $this->fileName);
+
+                    $this->stateInfo = $this->stateMap[0];
+
+                } catch (FileException $exception) {
+                    $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
+                    return false;
+                }
+
+                break;
+
+            // 上传至七牛云
+            case 'qiniu' :
+
+                $content=file_get_contents($this->file->getPathname());
+                return $this->uploadQiniu($this->filePath,$content);
+
+                break;
+
+            // 上传至阿里云
+            case 'oss' :
+
+                $content=file_get_contents($this->file->getPathname());
+                return $this->uploadAliOss($this->filePath,$content);
+
+                break;
+
+            // 上传至 storage
+            case 'storage' :
+
+                $folder = config('UEditorUpload.core.storage.folder');
+                if(config('UEditorUpload.core.storage.classifyByFileType')){
+                    $folder .='/'. str_replace('.','',$this->fileType);
+                }
+                $path = \Storage::putFile($folder, $this->file);
+                $this->fullName = \Storage::url($path);
+                $this->stateInfo=$this->stateMap[0];
+
+                break;
+
+            // 上传至 ftp
+            case 'ftp' :
+
+                // 本地文件暂存目录   $this->getPathname()
+                // 远程目录          $this->getFullName() UEditorUpload.php 配置中的 imagePathFormat
+                return $this->uploadFtp($this->file->getPathname(), $this->getFullName());
+                break;
+
+            // 模式未定义 ERROR_UNKNOWN_MODE
+            default :
+
+                $this->stateInfo = $this->getStateInfo("ERROR_UNKNOWN_MODE");
                 return false;
-            }
-
-        }else if(config('UEditorUpload.core.mode')=='qiniu'){
-
-            $content=file_get_contents($this->file->getPathname());
-            return $this->uploadQiniu($this->filePath,$content);
-
-        }else if(config('UEditorUpload.core.mode')=='oss'){
-
-            $content=file_get_contents($this->file->getPathname());
-            return $this->uploadAliOss($this->filePath,$content);
-
-        }else if(config('UEditorUpload.core.mode')=='storage'){
-            //上传文件到oss
-            $folder = config('UEditorUpload.core.storage.folder');
-            if(config('UEditorUpload.core.storage.classifyByFileType')){
-                $folder .='/'. str_replace('.','',$this->fileType);
-            }
-            $path = \Storage::putFile($folder, $this->file);
-            $this->fullName = \Storage::url($path);
-            $this->stateInfo=$this->stateMap[0];
-
-        }else{
-            $this->stateInfo = $this->getStateInfo("ERROR_UNKNOWN_MODE");
-            return false;
         }
 
         return true;

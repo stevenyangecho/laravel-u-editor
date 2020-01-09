@@ -13,6 +13,11 @@ UEditor 前台文件完全无修改,可自由gulp等工具部署到生产环境
 
 
 ## ChangeLog
+
+  v1.4.6
+  
+  增加上传文件的FTP支持，使用方法点此 [UploadFTP](https://github.com/imba97/laravel-u-editor/blob/master/UploadFTP.md)
+
   v1.4.5
 
   增加laravel的storage的支持

@@ -50,6 +50,29 @@ return [
             'classifyByFileType' => false,//是否根据文件类型拆分到子文件夹
 
         ],
+        'ftp' => [
+            // 域名 例：U_EDITOR_FTP_DOMAIN=https://www.example.com/
+            'domain' => env('U_EDITOR_FTP_DOMAIN', ''),
+
+            // ftp地址 例：10.20.30.40
+            'host' => env('U_EDITOR_FTP_HOST', ''),
+
+            // 端口
+            'port' => env('U_EDITOR_FTP_PORT', '21'),
+
+            // 用户名密码
+            'user' => env('U_EDITOR_FTP_USER', ''),
+            'pass' => env('U_EDITOR_FTP_PASS', ''),
+
+            // 多个host、多帐号密码用的分隔符，为了防止密码中如果有“,”会拆分错误
+            'sep' => env('U_EDITOR_FTP_SEP', ','),
+
+            // 文件夹和文件的权限
+            'mode' => env('U_EDITOR_FTP_SEP', '0777'),
+
+            // 是否开启日志输出
+            'log' => env('U_EDITOR_FTP_LOG', 'true'),
+        ],
 
 
     ],
