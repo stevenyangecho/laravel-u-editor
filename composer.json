@@ -1,5 +1,5 @@
 {
-  "name": "stevenyangecho/laravel-u-editor",
+  "name": "fivenull/laravel-u-editor",
   "description": "UEditor for laravel5. Support i18n. UEditor is a Rich Text Web Editor From Baidu.",
   "keywords": [
     "laravel",
@@ -20,7 +20,7 @@
   "require": {
     "php": ">=5.4.0",
     "ext-fileinfo": "*",
-    "illuminate/support": "5.*",
+    "illuminate/support": "5.*|^6.0",
     "qiniu/php-sdk": "7.*"
   },
   "autoload": {
